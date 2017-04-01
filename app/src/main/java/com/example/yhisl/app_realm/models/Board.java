@@ -1,5 +1,7 @@
 package com.example.yhisl.app_realm.models;
 
+import com.example.yhisl.app_realm.app.MyApplication;
+
 import java.util.Date;
 
 import io.realm.RealmList;
@@ -28,7 +30,7 @@ public class Board extends RealmObject {
 
     }
     public Board(String title){
-        this.id = 0;
+        this.id = MyApplication.BoardID.incrementAndGet();
         this.title = title;
         this.CreateDate = new Date();
         this.notes = new RealmList<Note>();
@@ -53,5 +55,5 @@ public class Board extends RealmObject {
     public RealmList<Note> getNotes() {
         return notes;
     }
-    
+
 }
