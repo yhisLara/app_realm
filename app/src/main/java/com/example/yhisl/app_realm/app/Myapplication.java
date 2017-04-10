@@ -25,6 +25,8 @@ public class MyApplication extends Application {
 
     @Override
     public void onCreate() {
+
+        Realm.init(this);
         setUpRealmConfig();
 
         Realm realm = Realm.getDefaultInstance();
@@ -35,7 +37,7 @@ public class MyApplication extends Application {
 
     private void setUpRealmConfig() {
         RealmConfiguration config = new RealmConfiguration
-                .Builder(getApplicationContext())
+                .Builder()
                 .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(config);
